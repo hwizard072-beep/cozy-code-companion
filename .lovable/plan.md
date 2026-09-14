@@ -1,11 +1,14 @@
-# Enter Whitelist banner background
+# Site-wide image source repair and logo swap
 
 ## What will change
-- Store the supplied banner artwork with the project so it remains reliable after publishing.
-- Replace the solid pink fill on both “Enter Whitelist” buttons with the banner image, stretched to each button’s exact size.
-- Keep the existing text, font, gold color, dimensions, spacing, borders, shadows, and sparkle hover animation unchanged.
-- Render the banner with pixelated image rendering for crisp scaling.
+- Replace the landing background, whitelist background, button artwork, corner frames, center frame, footer logo, title logo, preview GIFs, and social icons with jsDelivr links from the ARCSultans repository.
+- Replace both visible “ARCSultans” text titles with the supplied title artwork, keeping the landing version large and the panel version compact.
+- Preserve the current dimensions, positions, overlays, transitions, button behavior, form behavior, and footer layout.
+- Apply crisp pixel rendering to every displayed site image.
+- Remove obsolete local image imports from the page so no broken project-asset URL remains in rendered content.
 
 ## Verification
-- Check both the landing button and the expanded-panel button visually at desktop and mobile sizes.
-- Confirm both buttons still work and the project builds successfully.
+- Confirm every jsDelivr image URL responds successfully.
+- Check the landing, expanded whitelist, and dialog states in the live preview.
+- Verify there are no failed image requests, the corner frames remain aligned, and both title-logo sizes match their existing placements.
+- Check desktop and mobile layouts and confirm the project compiles successfully.
