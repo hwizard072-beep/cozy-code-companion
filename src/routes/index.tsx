@@ -11,41 +11,34 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { WhitelistForm } from "@/components/WhitelistForm";
-import buttonBackground from "@/assets/button-4k.png.asset.json";
-import fourframesImage from "@/assets/fourframes.png.asset.json";
-import homepageBackground from "@/assets/homepage.png.asset.json";
-import homeFrontTextImage from "@/assets/home-fronttext.png.asset.json";
-import footerBrandImage from "@/assets/ARCSULTANSfootertext.png.asset.json";
-import mainframeImage from "@/assets/mainframe.png.asset.json";
-import nft1 from "@/assets/nft-1.jpg";
-import nft2 from "@/assets/nft-2.jpg";
-import nft3 from "@/assets/nft-3.jpg";
-import nft4 from "@/assets/nft-4.jpg";
-import nft5 from "@/assets/nft-5.jpg";
-import nft6 from "@/assets/nft-6.jpg";
-const SLIDES = [nft1, nft2, nft3, nft4, nft5, nft6];
+const CDN_ROOT = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main";
+const SLIDES = Array.from(
+  { length: 6 },
+  (_, index) => `${CDN_ROOT}/output_legendary_pool/images/${index + 1}.png`,
+);
 
-const HOME_BACKGROUND = homepageBackground.url;
+const HOME_BACKGROUND = `${CDN_ROOT}/backgroundstory/homepage.png`;
+const TITLE_LOGO = `${CDN_ROOT}/backgroundstory/home%20fronttext.png`;
+const FOOTER_LOGO = `${CDN_ROOT}/footer/ARCSULTANSfootertext.png`;
 const WHITELIST_BUTTON_BACKGROUND = {
   backgroundColor: "transparent",
-  backgroundImage: `url(${buttonBackground.url})`,
+  backgroundImage: `url(${CDN_ROOT}/buttons/button-4k.png)`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "100% 100%",
   imageRendering: "pixelated",
 } as const;
-const WHITELIST_BACKGROUND =
-  "https://raw.githubusercontent.com/0xDarkSeidBull/TheSaudisARC/main/backgroundstory/whitelistpage.png";
+const WHITELIST_BACKGROUND = `${CDN_ROOT}/backgroundstory/whitelistpage.png`;
 
-const CENTER_PREVIEW = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main/layers/arcsultans_mixed_100.gif";
-const MAIN_FRAME = mainframeImage.url;
-const FOUR_FRAMES = fourframesImage.url;
+const CENTER_PREVIEW = `${CDN_ROOT}/layers/arcsultans_mixed_100.gif`;
+const MAIN_FRAME = `${CDN_ROOT}/frames/mainframe.png`;
+const FOUR_FRAMES = `${CDN_ROOT}/frames/fourframes.png`;
 
 const SIDE_FRAMES = [
-  "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main/layers/arcsultans_arc_backgound_100.gif",
-  "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main/layers/arcsultans_magma_burst_100.gif",
-  "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main/layers/arcsultans_solid_sky_blue_100.gif",
-  "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main/layers/arcsultans_solid_slate_gray_100.gif",
+  `${CDN_ROOT}/layers/arcsultans_arc_backgound_100.gif`,
+  `${CDN_ROOT}/layers/arcsultans_magma_burst_100.gif`,
+  `${CDN_ROOT}/layers/arcsultans_solid_sky_blue_100.gif`,
+  `${CDN_ROOT}/layers/arcsultans_solid_slate_gray_100.gif`,
 ] as const;
 
 function StateBackground({ isWhitelist }: { isWhitelist: boolean }) {
@@ -54,14 +47,14 @@ function StateBackground({ isWhitelist }: { isWhitelist: boolean }) {
       <img
         src={HOME_BACKGROUND}
         alt=""
-        className={`absolute inset-0 h-full w-full object-cover object-center [image-rendering:auto] transition-opacity duration-700 ease-in-out ${
+        className={`absolute inset-0 h-full w-full object-cover object-center [image-rendering:pixelated] transition-opacity duration-700 ease-in-out ${
           isWhitelist ? "opacity-0" : "opacity-100"
         }`}
       />
       <img
         src={WHITELIST_BACKGROUND}
         alt=""
-        className={`absolute inset-0 h-full w-full object-cover object-center [image-rendering:auto] transition-opacity duration-700 ease-in-out ${
+        className={`absolute inset-0 h-full w-full object-cover object-center [image-rendering:pixelated] transition-opacity duration-700 ease-in-out ${
           isWhitelist ? "opacity-100" : "opacity-0"
         }`}
       />
@@ -167,7 +160,7 @@ function Index() {
           <section key="home" className="state-enter mx-auto flex h-full w-full max-w-3xl -translate-y-12 flex-col items-center justify-center pt-24 text-center sm:-translate-y-16 sm:pt-28">
             <h1 className="sr-only">ARCSultans</h1>
             <img
-              src={homeFrontTextImage.url}
+              src={TITLE_LOGO}
               alt="ARCSultans"
               className="w-full max-w-lg object-contain [image-rendering:pixelated] sm:max-w-xl"
             />
@@ -187,7 +180,12 @@ function Index() {
           <section key="whitelist" className="state-enter mx-auto flex w-full max-w-xl items-center justify-center">
             <div className="w-full max-w-md border-4 border-secondary bg-card pixel-shadow">
               <header className="border-b-4 border-secondary bg-muted px-4 py-3 text-center">
-                <h1 className="brand-title text-2xl sm:text-3xl">ARCSultans</h1>
+                <h1 className="sr-only">ARCSultans</h1>
+                <img
+                  src={TITLE_LOGO}
+                  alt="ARCSultans"
+                  className="mx-auto h-10 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-12"
+                />
                 <div className="mt-2 flex items-center justify-center gap-3 font-display text-[8px] text-muted-foreground sm:gap-6 sm:text-[9px]">
                    <span>SUPPLY: 999</span>
                   <span className="text-primary [animation:arcade-blink_1.2s_steps(1)_infinite]">WHITELIST LIVE</span>
@@ -289,7 +287,7 @@ function Index() {
       <footer className="relative z-20 w-full shrink-0 border-t-2 border-footer-border bg-footer-surface font-display text-footer-copy">
         <div className="mx-auto grid w-full max-w-[1536px] gap-x-8 gap-y-5 px-5 py-5 sm:px-8 lg:grid-cols-[minmax(190px,1fr)_minmax(360px,2fr)_auto] lg:items-center lg:px-10 lg:py-4">
           <div className="min-w-0">
-            <img src={footerBrandImage.url} alt="ARCSultans" className="h-7 w-auto max-w-full object-contain sm:h-8" />
+            <img src={FOOTER_LOGO} alt="ARCSultans" className="h-7 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-8" />
             <p className="mt-2 text-[9px] leading-4 text-footer-copy sm:text-[10px]">Mint 16 September 2026 · ARC MAINNET</p>
           </div>
 
@@ -310,17 +308,17 @@ function Index() {
                 {
                   href: "https://x.com/arcsultans",
                   label: "X (Twitter)",
-                  icon: "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main/footer/x-pixel-outline.svg",
+                  icon: `${CDN_ROOT}/footer/x-pixel-outline.svg`,
                 },
                 {
                   href: "https://t.me/arcsultans",
                   label: "Telegram",
-                  icon: "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main/footer/telegram-pixel.svg",
+                  icon: `${CDN_ROOT}/footer/telegram-pixel.svg`,
                 },
                 {
                   href: "https://opensea.io/collection/YOUR_COLLECTION",
                   label: "OpenSea",
-                  icon: "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main/footer/opensea-pixel.svg",
+                  icon: `${CDN_ROOT}/footer/opensea-pixel.svg`,
                 },
               ].map((item) => (
                 <a
@@ -331,7 +329,7 @@ function Index() {
                   aria-label={item.label}
                   className="flex h-10 w-10 shrink-0 items-center justify-center border border-footer-icon-border bg-footer-icon transition-colors duration-150 hover:border-footer-title focus-visible:border-footer-title focus-visible:outline-none sm:h-11 sm:w-11"
                 >
-                  <img src={item.icon} alt="" className="h-5 w-5 object-contain sm:h-6 sm:w-6" />
+                  <img src={item.icon} alt="" className="h-5 w-5 object-contain [image-rendering:pixelated] sm:h-6 sm:w-6" />
                 </a>
               ))}
             </div>
