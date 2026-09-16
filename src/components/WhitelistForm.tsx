@@ -180,7 +180,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
             href="https://x.com/arcsultans"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-display text-[10px] font-bold text-footer-title hover:text-accent"
+            className="inline-flex items-center gap-1.5 font-display text-[10px] font-bold text-footer-title"
           >
             Follow @ARCSultans on X
             <ExternalLink className="h-3.5 w-3.5" />
