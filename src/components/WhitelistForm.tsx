@@ -1,14 +1,46 @@
 import { useState } from "react";
-import { Check, ExternalLink, Loader2 } from "lucide-react";
+import { ExternalLink, Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import buttonAsset from "@/assets/button-4k-fixed.png.asset.json";
+import fieldFrameAsset from "@/assets/wl-buttonframe.png.asset.json";
+import followFrameAsset from "@/assets/wl-followed.png.asset.json";
 
 const WALLET_RE = /^0x[a-fA-F0-9]{40}$/;
 // Direct comment link: https://x.com/USERNAME/status/123 or https://twitter.com/USERNAME/status/123
 const X_COMMENT_RE = /^https:\/\/(?:x\.com|twitter\.com)\/([A-Za-z0-9_]+)\/status\/\d+$/;
+
+const FIELD_FRAME = {
+  borderStyle: "solid",
+  borderColor: "transparent",
+  borderWidth: "11px 16px",
+  borderImageSource: `url(${fieldFrameAsset.url})`,
+  borderImageSlice: "71 85",
+  borderImageRepeat: "stretch",
+  imageRendering: "pixelated",
+} as const;
+
+const FOLLOW_FRAME = {
+  borderStyle: "solid",
+  borderColor: "transparent",
+  borderWidth: "22px 18px",
+  borderImageSource: `url(${followFrameAsset.url})`,
+  borderImageSlice: "131 100",
+  borderImageRepeat: "stretch",
+  imageRendering: "pixelated",
+} as const;
+
+const SUBMIT_BUTTON = {
+  backgroundColor: "transparent",
+  backgroundImage: `url(${buttonAsset.url})`,
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "100% 100%",
+  imageRendering: "pixelated",
+} as const;
 
 type Errors = Partial<Record<"walletAddress" | "xUsername" | "xCommentLink" | "form", string>>;
 
@@ -19,7 +51,6 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
   const [followed, setFollowed] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
-  const [done, setDone] = useState(false);
 
   const walletValid = WALLET_RE.test(walletAddress.trim());
   const usernameClean = xUsername.trim().replace(/^@/, "");
@@ -62,7 +93,6 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         }),
       });
       if (res.ok) {
-        setDone(true);
         onDone?.();
       } else {
         let message = "Something went wrong. Please try again.";
@@ -83,97 +113,102 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
     }
   }
 
-  if (done) {
-    return (
-      <div className="flex flex-col items-center gap-4 py-8 text-center">
-        <div className="flex h-16 w-16 items-center justify-center border-4 border-accent bg-accent/10">
-          <Check className="h-8 w-8 text-primary" strokeWidth={3} />
-        </div>
-        <h3 className="font-display text-lg font-bold text-accent">YOU'RE WHITELISTED!</h3>
-        <p className="font-display text-[10px] text-muted-foreground">SEE YOU AT MINT — 16.09.2026.</p>
-      </div>
-    );
-  }
-
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-      <div className="space-y-2">
-        <Label htmlFor="wallet" className="font-display text-[10px] text-foreground">ARC WALLET ADDRESS</Label>
-        <Input
-          id="wallet"
-          value={walletAddress}
-          onChange={(e) => setWalletAddress(e.target.value)}
-          placeholder="0x…"
-          autoComplete="off"
-          spellCheck={false}
-          maxLength={42}
-          className="h-11 border-2 bg-background font-mono text-sm focus-visible:ring-2"
-        />
+      <div className="space-y-1.5">
+        <Label htmlFor="wallet" className="font-display text-[9px] text-footer-title sm:text-[10px]">
+          ARC WALLET ADDRESS
+        </Label>
+        <div style={FIELD_FRAME}>
+          <Input
+            id="wallet"
+            value={walletAddress}
+            onChange={(e) => setWalletAddress(e.target.value)}
+            placeholder="0x…"
+            autoComplete="off"
+            spellCheck={false}
+            maxLength={42}
+            className="h-8 rounded-none border-0 bg-transparent px-1 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
+          />
+        </div>
         {walletAddress.length > 0 && !walletValid && (
-          <p className="text-xs text-destructive">
-            Must start with 0x followed by 40 hex characters.
-          </p>
+          <p className="text-xs text-destructive">Must start with 0x followed by 40 hex characters.</p>
         )}
         {errors.walletAddress && <p className="text-xs text-destructive">{errors.walletAddress}</p>}
       </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="x-username" className="font-display text-[10px] text-foreground">X USERNAME</Label>
-        <Input
-          id="x-username"
-          value={xUsername}
-          onChange={(e) => setXUsername(e.target.value)}
-          placeholder="@yourhandle"
-          maxLength={50}
-          className="h-11 border-2 bg-background font-mono text-sm focus-visible:ring-2"
-        />
+      <div className="space-y-1.5">
+        <Label htmlFor="x-username" className="font-display text-[9px] text-footer-title sm:text-[10px]">
+          X USERNAME
+        </Label>
+        <div style={FIELD_FRAME}>
+          <Input
+            id="x-username"
+            value={xUsername}
+            onChange={(e) => setXUsername(e.target.value)}
+            placeholder="@yourhandle"
+            maxLength={50}
+            className="h-8 rounded-none border-0 bg-transparent px-1 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
+          />
+        </div>
         {errors.xUsername && <p className="text-xs text-destructive">{errors.xUsername}</p>}
       </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="x-comment-link" className="font-display text-[10px] text-foreground">X COMMENT LINK</Label>
-        <Input
-          id="x-comment-link"
-          value={xCommentLink}
-          onChange={(e) => setXCommentLink(e.target.value)}
-          placeholder="https://x.com/.../status/..."
-          autoComplete="off"
-          spellCheck={false}
-          maxLength={500}
-          className="h-11 border-2 bg-background font-mono text-sm focus-visible:ring-2"
-        />
+      <div className="space-y-1.5">
+        <Label htmlFor="x-comment-link" className="font-display text-[9px] text-footer-title sm:text-[10px]">
+          X COMMENT LINK
+        </Label>
+        <div style={FIELD_FRAME}>
+          <Input
+            id="x-comment-link"
+            value={xCommentLink}
+            onChange={(e) => setXCommentLink(e.target.value)}
+            placeholder="https://x.com/.../status/..."
+            autoComplete="off"
+            spellCheck={false}
+            maxLength={500}
+            className="h-8 rounded-none border-0 bg-transparent px-1 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
+          />
+        </div>
         {linkError && <p className="text-xs text-destructive">{linkError}</p>}
         {errors.xCommentLink && <p className="text-xs text-destructive">{errors.xCommentLink}</p>}
       </div>
 
-      <div className="border-2 border-secondary bg-muted p-4">
-        <a
-          href="https://x.com/arcsultans"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 font-display text-[10px] font-bold text-accent hover:text-primary"
-        >
-          Follow @ARCSultans on X
-          <ExternalLink className="h-3.5 w-3.5" />
-        </a>
-        <div className="mt-3 flex items-start gap-2.5">
-          <Checkbox
-            id="followed"
-            checked={followed}
-            onCheckedChange={(v) => setFollowed(v === true)}
-            className="mt-0.5"
-          />
-          <Label htmlFor="followed" className="font-display text-[9px] leading-5 font-normal">
-            I'VE FOLLOWED @ARCSultans ON X
-          </Label>
+      <div style={FOLLOW_FRAME}>
+        <div className="px-1">
+          <a
+            href="https://x.com/arcsultans"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 font-display text-[10px] font-bold text-footer-title hover:text-accent"
+          >
+            Follow @ARCSultans on X
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+          <div className="mt-2.5 flex items-start gap-2.5">
+            <Checkbox
+              id="followed"
+              checked={followed}
+              onCheckedChange={(v) => setFollowed(v === true)}
+              className="mt-0.5 rounded-none border-footer-title data-[state=checked]:bg-footer-title"
+            />
+            <Label htmlFor="followed" className="font-display text-[9px] leading-5 font-normal text-footer-title">
+              I'VE FOLLOWED @ARCSultans ON X
+            </Label>
+          </div>
         </div>
       </div>
 
       {errors.form && <p className="text-sm text-destructive">{errors.form}</p>}
 
-      <Button type="submit" disabled={!canSubmit} className="h-12 w-full border-b-4 border-secondary font-display text-xs font-bold shadow-none active:translate-y-1 active:border-b-0">
+      <Button
+        type="submit"
+        disabled={!canSubmit}
+        style={SUBMIT_BUTTON}
+        className="h-11 w-full border-0 bg-primary font-display text-[11px] font-bold text-footer-title shadow-none hover:bg-primary/90 disabled:opacity-60 sm:text-xs"
+      >
         {submitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-        Submit
+        SUBMIT
       </Button>
     </form>
   );
