@@ -194,16 +194,16 @@ function Index() {
               </header>
 
               <div className="flex flex-col items-center px-4 py-4">
-                <div className="relative aspect-square w-full max-w-72">
+                <div className="relative aspect-[557/543] w-full max-w-72 overflow-hidden">
                   <img
                     src={CENTER_PREVIEW}
                     alt="Animated ARCSultans NFT collection preview"
-                    className="absolute left-[32.3%] top-[29.03%] h-[34.61%] w-[35.41%] object-cover [image-rendering:pixelated]"
+                    className="absolute left-[10.05%] top-[9.94%] h-[80.11%] w-[79.71%] object-cover [image-rendering:pixelated]"
                   />
                   <img
                     src={MAIN_FRAME}
                     alt=""
-                    className="absolute inset-0 h-full w-full [image-rendering:pixelated]"
+                    className="absolute left-[-62.66%] top-[-56.91%] h-auto w-[225.13%] max-w-none [image-rendering:pixelated]"
                   />
                 </div>
 
