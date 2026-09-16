@@ -2,16 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { WhitelistForm } from "@/components/WhitelistForm";
 import buttonAsset from "@/assets/button-4k-fixed.png.asset.json";
+import wlTagAsset from "@/assets/wl-whitelistag.png.asset.json";
+import wlPanelAsset from "@/assets/wl-whitelistframes.png.asset.json";
 const CDN_ROOT = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main";
 
 const HOME_BACKGROUND = `${CDN_ROOT}/backgroundstory/homepage.png`;
@@ -23,6 +17,15 @@ const WHITELIST_BUTTON_BACKGROUND = {
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "100% 100%",
+  imageRendering: "pixelated",
+} as const;
+const FORM_PANEL_FRAME = {
+  borderStyle: "solid",
+  borderColor: "transparent",
+  borderWidth: "26px",
+  borderImageSource: `url(${wlPanelAsset.url})`,
+  borderImageSlice: "120 fill",
+  borderImageRepeat: "stretch",
   imageRendering: "pixelated",
 } as const;
 const WHITELIST_BACKGROUND = `${CDN_ROOT}/backgroundstory/whitelistpage.png`;
