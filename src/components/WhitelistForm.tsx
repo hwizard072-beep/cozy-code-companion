@@ -205,7 +205,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         type="submit"
         disabled={!canSubmit}
         style={SUBMIT_BUTTON}
-        className="mx-auto block h-11 w-[60%] border-0 bg-primary font-display text-[11px] font-bold text-footer-title shadow-none hover:bg-primary/90 disabled:opacity-60 sm:h-[54px] sm:text-xs"
+        className="mx-auto block h-11 w-[230px] border-0 bg-primary font-display text-[11px] font-bold text-footer-title shadow-none hover:bg-primary/90 disabled:opacity-60 sm:h-[54px] sm:w-[269px] sm:text-xs"
       >
         {submitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
         SUBMIT
