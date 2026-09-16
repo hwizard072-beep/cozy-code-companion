@@ -15,29 +15,47 @@ const WALLET_RE = /^0x[a-fA-F0-9]{40}$/;
 // Direct comment link: https://x.com/USERNAME/status/123 or https://twitter.com/USERNAME/status/123
 const X_COMMENT_RE = /^https:\/\/(?:x\.com|twitter\.com)\/([A-Za-z0-9_]+)\/status\/\d+$/;
 
-// Nine-slice (border-image) frames: corners render undistorted, only the
-// straight edges stretch — matches the reference proportions.
-const FIELD_FRAME = {
-  borderStyle: "solid",
-  borderColor: "transparent",
-  borderWidth: "18px 21px",
-  borderImageSource: `url(${FIELD_FRAME_IMAGE})`,
-  borderImageSlice: "169 200 186 200 fill",
-  borderImageWidth: "18px 21px",
-  borderImageRepeat: "stretch",
-  imageRendering: "pixelated",
+// Sprite-crop frames: the artwork has transparent margins baked into the
+// source image, so we render only the art region at its native aspect ratio —
+// corners and line thickness stay exactly as drawn, never stretched.
+const FIELD_SPRITE = {
+  width: "100.28%",
+  height: "196.21%",
+  left: "-0.23%",
+  top: "-45.8%",
 } as const;
 
-const FOLLOW_FRAME = {
-  borderStyle: "solid",
-  borderColor: "transparent",
-  borderWidth: "6px 21px 8px 21px",
-  borderImageSource: `url(${FOLLOW_FRAME_IMAGE})`,
-  borderImageSlice: "62 200 79 200 fill",
-  borderImageWidth: "6px 21px 8px 21px",
-  borderImageRepeat: "stretch",
-  imageRendering: "pixelated",
+const FOLLOW_SPRITE = {
+  width: "102.55%",
+  height: "123.93%",
+  left: "-1.23%",
+  top: "-10.62%",
 } as const;
+
+function SpriteFrame({
+  src,
+  sprite,
+  aspect,
+  children,
+}: {
+  src: string;
+  sprite: Readonly<Record<"width" | "height" | "left" | "top", string>>;
+  aspect: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="relative w-full" style={{ aspectRatio: aspect }}>
+      <img
+        src={src}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute max-w-none select-none [image-rendering:pixelated]"
+        style={sprite}
+      />
+      {children}
+    </div>
+  );
+}
 
 const SUBMIT_BUTTON = {
   backgroundColor: "transparent",
