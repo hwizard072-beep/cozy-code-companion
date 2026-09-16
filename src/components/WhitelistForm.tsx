@@ -32,7 +32,7 @@ const FOLLOW_SPRITE = {
   top: "-10.62%",
 } as const;
 
-function SpriteFrame({
+export function SpriteFrame({
   src,
   sprite,
   aspect,

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { WhitelistForm } from "@/components/WhitelistForm";
+import { WhitelistForm, SpriteFrame } from "@/components/WhitelistForm";
 const CDN_ROOT = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main";
 
 const HOME_BACKGROUND = `${CDN_ROOT}/backgroundstory/homepage.png`;
