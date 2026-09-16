@@ -12,10 +12,6 @@ import {
 } from "@/components/ui/dialog";
 import { WhitelistForm } from "@/components/WhitelistForm";
 const CDN_ROOT = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main";
-const SLIDES = Array.from(
-  { length: 6 },
-  (_, index) => `${CDN_ROOT}/output_legendary_pool/images/${index + 1}.png`,
-);
 
 const HOME_BACKGROUND = `${CDN_ROOT}/backgroundstory/homepage.png`;
 const TITLE_LOGO = `${CDN_ROOT}/backgroundstory/home%20fronttext.png`;
@@ -103,14 +99,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [active, setActive] = useState(0);
   const [open, setOpen] = useState(false);
   const [view, setView] = useState<"home" | "whitelist" | "success">("home");
-
-  useEffect(() => {
-    const id = setInterval(() => setActive((i) => (i + 1) % SLIDES.length), 3500);
-    return () => clearInterval(id);
-  }, []);
 
   function handleWhitelistDone() {
     setOpen(false);
