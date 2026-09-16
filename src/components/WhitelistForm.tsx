@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ExternalLink, Loader2 } from "lucide-react";
+import { ExternalLink, Loader2, Repeat2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -183,9 +183,20 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
       </div>
 
       <div className="space-y-1">
-        <Label htmlFor="x-comment-link" className="font-display text-[9px] text-footer-title sm:text-[10px]">
-          X COMMENT LINK
-        </Label>
+        <div className="flex items-center justify-between gap-2">
+          <Label htmlFor="x-comment-link" className="font-display text-[9px] text-footer-title sm:text-[10px]">
+            X COMMENT LINK
+          </Label>
+          <a
+            href="https://twitter.com/intent/retweet?tweet_id=2100153601129877957"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 font-display text-[9px] font-bold text-footer-title transition-colors hover:text-accent sm:text-[10px]"
+          >
+            <Repeat2 className="h-3.5 w-3.5" />
+            RETWEET
+          </a>
+        </div>
         <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 369">
           <div className="absolute inset-x-[11%] bottom-[19.5%] top-[19.2%] flex items-center">
             <Input

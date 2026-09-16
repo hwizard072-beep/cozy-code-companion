@@ -207,7 +207,7 @@ function Index() {
                 <img
                   src={WHITELIST_TAG}
                   alt="Whitelist"
-                  className="mx-auto h-12 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-16"
+                  className="mx-auto h-16 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-20"
                 />
               </header>
 
