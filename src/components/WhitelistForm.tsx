@@ -205,7 +205,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
       </div>
 
       <SpriteFrame src={FOLLOW_FRAME_IMAGE} sprite={FOLLOW_SPRITE} aspect="2118 / 584">
-        <div className="absolute inset-x-[8%] bottom-[19%] top-[26%] flex items-center">
+        <div className="absolute inset-x-[8%] bottom-[21%] top-[27%] flex items-center">
           <div>
           <a
             href="https://x.com/arcsultans"
