@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { WhitelistForm } from "@/components/WhitelistForm";
+import buttonAsset from "@/assets/button-4k-fixed.png.asset.json";
 const CDN_ROOT = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main";
 
 const HOME_BACKGROUND = `${CDN_ROOT}/backgroundstory/homepage.png`;
@@ -18,7 +19,7 @@ const TITLE_LOGO = `${CDN_ROOT}/backgroundstory/home%20fronttext.png`;
 const FOOTER_LOGO = `${CDN_ROOT}/footer/ARCSULTANSfootertext.png`;
 const WHITELIST_BUTTON_BACKGROUND = {
   backgroundColor: "transparent",
-  backgroundImage: `url(${CDN_ROOT}/buttons/button-4k.png)`,
+  backgroundImage: `url(${buttonAsset.url})`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "100% 100%",
@@ -212,8 +213,8 @@ function Index() {
                   </Dialog>
                 </div>
 
-                <p className="mt-1 text-center font-display text-[10px] font-bold leading-5 text-footer-title [text-shadow:0_2px_0_var(--background),0_0_10px_color-mix(in_oklab,var(--footer-title)_30%,transparent)] sm:text-xs">
-                   999 Sultans. 1 Arc Sultan. A golden dynasty on ARC network.
+                <p className="-mt-10 text-center font-display text-[10px] font-bold leading-5 text-footer-title [text-shadow:0_2px_0_var(--background),0_0_10px_color-mix(in_oklab,var(--footer-title)_30%,transparent)] sm:-mt-12 sm:text-xs">
+                  999 Sultans. 1 Arc Sultan.<br />A golden dynasty on ARC network.
                 </p>
               </div>
             </div>
