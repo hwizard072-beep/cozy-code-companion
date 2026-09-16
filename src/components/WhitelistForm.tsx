@@ -191,7 +191,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
             href="https://twitter.com/intent/retweet?tweet_id=2100153601129877957"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-display text-[9px] font-bold text-footer-title transition-colors hover:text-accent sm:text-[10px]"
+            className="inline-flex items-center gap-1 font-display text-[9px] font-bold text-footer-title transition-all hover:brightness-125 sm:text-[10px]"
           >
             <Repeat2 className="h-3.5 w-3.5" />
             RETWEET
