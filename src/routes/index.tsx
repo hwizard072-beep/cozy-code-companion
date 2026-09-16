@@ -210,10 +210,8 @@ function Index() {
                 />
               </header>
 
-              <div style={FORM_PANEL_FRAME} className="bg-popover/80">
-                <div className="px-1 py-1 sm:px-2 sm:py-2">
-                  <WhitelistForm onDone={handleWhitelistDone} />
-                </div>
+              <div className="px-1 py-1 sm:px-2 sm:py-2">
+                <WhitelistForm onDone={handleWhitelistDone} />
               </div>
             </div>
           </section>
