@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import buttonAsset from "@/assets/button-4kd.png.asset.json";
-import fieldFrameAsset from "@/assets/wl-buttonframe.png.asset.json";
-import followFrameAsset from "@/assets/wl-followed.png.asset.json";
+
+const CDN_ROOT = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main";
+const THRONE_BUTTON = `${CDN_ROOT}/buttons/button-4kd.png`;
+const FIELD_FRAME_IMAGE = `${CDN_ROOT}/whitelist_submit/buttonframe.png`;
+const FOLLOW_FRAME_IMAGE = `${CDN_ROOT}/whitelist_submit/followed.png`;
 
 const WALLET_RE = /^0x[a-fA-F0-9]{40}$/;
 // Direct comment link: https://x.com/USERNAME/status/123 or https://twitter.com/USERNAME/status/123
@@ -15,7 +17,7 @@ const X_COMMENT_RE = /^https:\/\/(?:x\.com|twitter\.com)\/([A-Za-z0-9_]+)\/statu
 
 const FIELD_FRAME = {
   backgroundColor: "transparent",
-  backgroundImage: `url(${fieldFrameAsset.url})`,
+  backgroundImage: `url(${FIELD_FRAME_IMAGE})`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "100% 100%",
@@ -24,7 +26,7 @@ const FIELD_FRAME = {
 
 const FOLLOW_FRAME = {
   backgroundColor: "transparent",
-  backgroundImage: `url(${followFrameAsset.url})`,
+  backgroundImage: `url(${FOLLOW_FRAME_IMAGE})`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "100% 100%",
@@ -33,7 +35,7 @@ const FOLLOW_FRAME = {
 
 const SUBMIT_BUTTON = {
   backgroundColor: "transparent",
-  backgroundImage: `url(${buttonAsset.url})`,
+  backgroundImage: `url(${THRONE_BUTTON})`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "100% 100%",

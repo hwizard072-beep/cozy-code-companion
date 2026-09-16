@@ -3,17 +3,17 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { WhitelistForm } from "@/components/WhitelistForm";
-import buttonAsset from "@/assets/button-4kd.png.asset.json";
-import wlTagAsset from "@/assets/wl-whitelistag.png.asset.json";
-import wlPanelAsset from "@/assets/wl-whitelistframes.png.asset.json";
 const CDN_ROOT = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main";
 
 const HOME_BACKGROUND = `${CDN_ROOT}/backgroundstory/homepage.png`;
 const TITLE_LOGO = `${CDN_ROOT}/backgroundstory/home%20fronttext.png`;
 const FOOTER_LOGO = `${CDN_ROOT}/footer/ARCSULTANSfootertext.png`;
+const THRONE_BUTTON = `${CDN_ROOT}/buttons/button-4kd.png`;
+const WHITELIST_TAG = `${CDN_ROOT}/whitelist_submit/whitelistag.png`;
+const WHITELIST_PANEL = `${CDN_ROOT}/whitelist_submit/whitelistframes.png`;
 const WHITELIST_BUTTON_BACKGROUND = {
   backgroundColor: "transparent",
-  backgroundImage: `url(${buttonAsset.url})`,
+  backgroundImage: `url(${THRONE_BUTTON})`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "100% 100%",
@@ -23,7 +23,7 @@ const FORM_PANEL_FRAME = {
   borderStyle: "solid",
   borderColor: "transparent",
   borderWidth: "26px",
-  borderImageSource: `url(${wlPanelAsset.url})`,
+  borderImageSource: `url(${WHITELIST_PANEL})`,
   borderImageSlice: "120 fill",
   borderImageRepeat: "stretch",
   imageRendering: "pixelated",
@@ -214,7 +214,7 @@ function Index() {
               <header className="relative z-10 mb-1 px-4 text-center sm:mb-2">
                 <h1 className="sr-only">ARCSultans Whitelist</h1>
                 <img
-                  src={wlTagAsset.url}
+                  src={WHITELIST_TAG}
                   alt="Whitelist"
                   className="mx-auto h-16 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-24"
                 />
