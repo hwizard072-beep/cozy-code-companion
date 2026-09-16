@@ -3,17 +3,17 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { WhitelistForm } from "@/components/WhitelistForm";
-import buttonAsset from "@/assets/button-4k-fixed.png.asset.json";
-import wlTagAsset from "@/assets/wl-whitelistag.png.asset.json";
-import wlPanelAsset from "@/assets/wl-whitelistframes.png.asset.json";
 const CDN_ROOT = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main";
 
 const HOME_BACKGROUND = `${CDN_ROOT}/backgroundstory/homepage.png`;
 const TITLE_LOGO = `${CDN_ROOT}/backgroundstory/home%20fronttext.png`;
 const FOOTER_LOGO = `${CDN_ROOT}/footer/ARCSULTANSfootertext.png`;
+const THRONE_BUTTON = `${CDN_ROOT}/buttons/button-4kd.png`;
+const WHITELIST_TAG = `${CDN_ROOT}/whitelist_submit/whitelistag.png`;
+const WHITELIST_PANEL = `${CDN_ROOT}/whitelist_submit/whitelistframes.png`;
 const WHITELIST_BUTTON_BACKGROUND = {
   backgroundColor: "transparent",
-  backgroundImage: `url(${buttonAsset.url})`,
+  backgroundImage: `url(${THRONE_BUTTON})`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "100% 100%",
@@ -23,7 +23,7 @@ const FORM_PANEL_FRAME = {
   borderStyle: "solid",
   borderColor: "transparent",
   borderWidth: "26px",
-  borderImageSource: `url(${wlPanelAsset.url})`,
+  borderImageSource: `url(${WHITELIST_PANEL})`,
   borderImageSlice: "120 fill",
   borderImageRepeat: "stretch",
   imageRendering: "pixelated",
@@ -165,7 +165,7 @@ function Index() {
               style={WHITELIST_BUTTON_BACKGROUND}
               className="mt-5 h-9 w-full max-w-[250px] border-0 bg-primary px-2 font-display text-[10px] font-bold text-footer-title shadow-none hover:bg-primary/90 sm:h-10 sm:text-xs"
             >
-              CLAIM YOUR THRONE
+              ENTER THE SULTANATE
             </Button>
           </section>
         ) : view === "whitelist" ? (
@@ -214,25 +214,17 @@ function Index() {
               <header className="relative z-10 mb-1 px-4 text-center sm:mb-2">
                 <h1 className="sr-only">ARCSultans Whitelist</h1>
                 <img
-                  src={wlTagAsset.url}
+                  src={WHITELIST_TAG}
                   alt="Whitelist"
                   className="mx-auto h-16 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-24"
                 />
               </header>
 
-              <div style={FORM_PANEL_FRAME}>
-                <div className="px-1 py-1 sm:px-2">
+              <div style={FORM_PANEL_FRAME} className="bg-popover/80">
+                <div className="px-1 py-2 sm:px-2 sm:py-3">
                   <WhitelistForm onDone={handleWhitelistDone} />
                 </div>
               </div>
-
-              <button
-                type="button"
-                onClick={() => setView("whitelist")}
-                className="mx-auto mt-3 block font-display text-[9px] uppercase text-footer-title/80 hover:text-footer-title sm:text-[10px]"
-              >
-                ← Back
-              </button>
             </div>
           </section>
         ) : (

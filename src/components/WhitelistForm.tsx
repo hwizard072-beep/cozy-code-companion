@@ -5,37 +5,37 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import buttonAsset from "@/assets/button-4k-fixed.png.asset.json";
-import fieldFrameAsset from "@/assets/wl-buttonframe.png.asset.json";
-import followFrameAsset from "@/assets/wl-followed.png.asset.json";
+
+const CDN_ROOT = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main";
+const THRONE_BUTTON = `${CDN_ROOT}/buttons/button-4kd.png`;
+const FIELD_FRAME_IMAGE = `${CDN_ROOT}/whitelist_submit/buttonframe.png`;
+const FOLLOW_FRAME_IMAGE = `${CDN_ROOT}/whitelist_submit/followed.png`;
 
 const WALLET_RE = /^0x[a-fA-F0-9]{40}$/;
 // Direct comment link: https://x.com/USERNAME/status/123 or https://twitter.com/USERNAME/status/123
 const X_COMMENT_RE = /^https:\/\/(?:x\.com|twitter\.com)\/([A-Za-z0-9_]+)\/status\/\d+$/;
 
 const FIELD_FRAME = {
-  borderStyle: "solid",
-  borderColor: "transparent",
-  borderWidth: "11px 16px",
-  borderImageSource: `url(${fieldFrameAsset.url})`,
-  borderImageSlice: "71 85",
-  borderImageRepeat: "stretch",
+  backgroundColor: "transparent",
+  backgroundImage: `url(${FIELD_FRAME_IMAGE})`,
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "100% 100%",
   imageRendering: "pixelated",
 } as const;
 
 const FOLLOW_FRAME = {
-  borderStyle: "solid",
-  borderColor: "transparent",
-  borderWidth: "22px 18px",
-  borderImageSource: `url(${followFrameAsset.url})`,
-  borderImageSlice: "131 100",
-  borderImageRepeat: "stretch",
+  backgroundColor: "transparent",
+  backgroundImage: `url(${FOLLOW_FRAME_IMAGE})`,
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "100% 100%",
   imageRendering: "pixelated",
 } as const;
 
 const SUBMIT_BUTTON = {
   backgroundColor: "transparent",
-  backgroundImage: `url(${buttonAsset.url})`,
+  backgroundImage: `url(${THRONE_BUTTON})`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "100% 100%",
@@ -114,12 +114,12 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" noValidate>
       <div className="space-y-1.5">
         <Label htmlFor="wallet" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           ARC WALLET ADDRESS
         </Label>
-        <div style={FIELD_FRAME}>
+        <div style={FIELD_FRAME} className="px-5 py-3 sm:px-7 sm:py-4">
           <Input
             id="wallet"
             value={walletAddress}
@@ -128,7 +128,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
             autoComplete="off"
             spellCheck={false}
             maxLength={42}
-            className="h-8 rounded-none border-0 bg-transparent px-1 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
+            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:h-8 sm:text-sm"
           />
         </div>
         {walletAddress.length > 0 && !walletValid && (
@@ -141,14 +141,14 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="x-username" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X USERNAME
         </Label>
-        <div style={FIELD_FRAME}>
+        <div style={FIELD_FRAME} className="px-5 py-3 sm:px-7 sm:py-4">
           <Input
             id="x-username"
             value={xUsername}
             onChange={(e) => setXUsername(e.target.value)}
             placeholder="@yourhandle"
             maxLength={50}
-            className="h-8 rounded-none border-0 bg-transparent px-1 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
+            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:h-8 sm:text-sm"
           />
         </div>
         {errors.xUsername && <p className="text-xs text-destructive">{errors.xUsername}</p>}
@@ -158,7 +158,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="x-comment-link" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X COMMENT LINK
         </Label>
-        <div style={FIELD_FRAME}>
+        <div style={FIELD_FRAME} className="px-5 py-3 sm:px-7 sm:py-4">
           <Input
             id="x-comment-link"
             value={xCommentLink}
@@ -167,15 +167,15 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
             autoComplete="off"
             spellCheck={false}
             maxLength={500}
-            className="h-8 rounded-none border-0 bg-transparent px-1 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
+            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:h-8 sm:text-sm"
           />
         </div>
         {linkError && <p className="text-xs text-destructive">{linkError}</p>}
         {errors.xCommentLink && <p className="text-xs text-destructive">{errors.xCommentLink}</p>}
       </div>
 
-      <div style={FOLLOW_FRAME}>
-        <div className="px-1">
+      <div style={FOLLOW_FRAME} className="px-6 py-5 sm:px-8 sm:py-6">
+        <div>
           <a
             href="https://x.com/arcsultans"
             target="_blank"
@@ -205,7 +205,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         type="submit"
         disabled={!canSubmit}
         style={SUBMIT_BUTTON}
-        className="mx-auto block h-11 w-[230px] border-0 bg-primary font-display text-[11px] font-bold text-footer-title shadow-none hover:bg-primary/90 disabled:opacity-60 sm:h-[54px] sm:w-[269px] sm:text-xs"
+        className="mx-auto block h-11 w-[250px] border-0 bg-transparent font-display text-[11px] font-bold text-footer-title shadow-none hover:bg-transparent disabled:cursor-not-allowed disabled:opacity-100 sm:h-[54px] sm:w-[300px] sm:text-xs"
       >
         {submitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
         SUBMIT
