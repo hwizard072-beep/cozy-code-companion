@@ -228,7 +228,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
             </Label>
           </div>
         </div>
-      </div>
+      </SpriteFrame>
 
       {errors.form && <p className="text-sm text-destructive">{errors.form}</p>}
 
