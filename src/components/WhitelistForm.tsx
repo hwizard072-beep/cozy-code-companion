@@ -15,23 +15,47 @@ const WALLET_RE = /^0x[a-fA-F0-9]{40}$/;
 // Direct comment link: https://x.com/USERNAME/status/123 or https://twitter.com/USERNAME/status/123
 const X_COMMENT_RE = /^https:\/\/(?:x\.com|twitter\.com)\/([A-Za-z0-9_]+)\/status\/\d+$/;
 
-const FIELD_FRAME = {
-  backgroundColor: "transparent",
-  backgroundImage: `url(${FIELD_FRAME_IMAGE})`,
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "100% 100%",
-  imageRendering: "pixelated",
+// Sprite-crop frames: the artwork has transparent margins baked into the
+// source image, so we render only the art region at its native aspect ratio —
+// corners and line thickness stay exactly as drawn, never stretched.
+const FIELD_SPRITE = {
+  width: "100.28%",
+  height: "196.21%",
+  left: "-0.23%",
+  top: "-45.8%",
 } as const;
 
-const FOLLOW_FRAME = {
-  backgroundColor: "transparent",
-  backgroundImage: `url(${FOLLOW_FRAME_IMAGE})`,
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "100% 100%",
-  imageRendering: "pixelated",
+const FOLLOW_SPRITE = {
+  width: "102.55%",
+  height: "123.93%",
+  left: "-1.23%",
+  top: "-10.62%",
 } as const;
+
+function SpriteFrame({
+  src,
+  sprite,
+  aspect,
+  children,
+}: {
+  src: string;
+  sprite: Readonly<Record<"width" | "height" | "left" | "top", string>>;
+  aspect: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="relative w-full" style={{ aspectRatio: aspect }}>
+      <img
+        src={src}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute max-w-none select-none [image-rendering:pixelated]"
+        style={sprite}
+      />
+      {children}
+    </div>
+  );
+}
 
 const SUBMIT_BUTTON = {
   backgroundColor: "transparent",
@@ -114,23 +138,25 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-2" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-1.5" noValidate>
       <div className="space-y-1">
         <Label htmlFor="wallet" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           ARC WALLET ADDRESS
         </Label>
-        <div style={FIELD_FRAME} className="flex h-11 items-center px-6 sm:h-12 sm:px-7">
-          <Input
-            id="wallet"
-            value={walletAddress}
-            onChange={(e) => setWalletAddress(e.target.value)}
-            placeholder="0x…"
-            autoComplete="off"
-            spellCheck={false}
-            maxLength={42}
-            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
-          />
-        </div>
+        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 369">
+          <div className="absolute inset-x-[11%] bottom-[19.5%] top-[19.2%] flex items-center">
+            <Input
+              id="wallet"
+              value={walletAddress}
+              onChange={(e) => setWalletAddress(e.target.value)}
+              placeholder="0x…"
+              autoComplete="off"
+              spellCheck={false}
+              maxLength={42}
+              className="h-full rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
+            />
+          </div>
+        </SpriteFrame>
         {walletAddress.length > 0 && !walletValid && (
           <p className="text-xs text-destructive">Must start with 0x followed by 40 hex characters.</p>
         )}
@@ -141,16 +167,18 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="x-username" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X USERNAME
         </Label>
-        <div style={FIELD_FRAME} className="flex h-11 items-center px-6 sm:h-12 sm:px-7">
-          <Input
-            id="x-username"
-            value={xUsername}
-            onChange={(e) => setXUsername(e.target.value)}
-            placeholder="@yourhandle"
-            maxLength={50}
-            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
-          />
-        </div>
+        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 369">
+          <div className="absolute inset-x-[11%] bottom-[19.5%] top-[19.2%] flex items-center">
+            <Input
+              id="x-username"
+              value={xUsername}
+              onChange={(e) => setXUsername(e.target.value)}
+              placeholder="@yourhandle"
+              maxLength={50}
+              className="h-full rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
+            />
+          </div>
+        </SpriteFrame>
         {errors.xUsername && <p className="text-xs text-destructive">{errors.xUsername}</p>}
       </div>
 
@@ -158,24 +186,27 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="x-comment-link" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X COMMENT LINK
         </Label>
-        <div style={FIELD_FRAME} className="flex h-11 items-center px-6 sm:h-12 sm:px-7">
-          <Input
-            id="x-comment-link"
-            value={xCommentLink}
-            onChange={(e) => setXCommentLink(e.target.value)}
-            placeholder="https://x.com/.../status/..."
-            autoComplete="off"
-            spellCheck={false}
-            maxLength={500}
-            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
-          />
-        </div>
+        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 369">
+          <div className="absolute inset-x-[11%] bottom-[19.5%] top-[19.2%] flex items-center">
+            <Input
+              id="x-comment-link"
+              value={xCommentLink}
+              onChange={(e) => setXCommentLink(e.target.value)}
+              placeholder="https://x.com/…"
+              autoComplete="off"
+              spellCheck={false}
+              maxLength={500}
+              className="h-full rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
+            />
+          </div>
+        </SpriteFrame>
         {linkError && <p className="text-xs text-destructive">{linkError}</p>}
         {errors.xCommentLink && <p className="text-xs text-destructive">{errors.xCommentLink}</p>}
       </div>
 
-      <div style={FOLLOW_FRAME} className="flex h-[76px] items-center px-7 sm:h-20 sm:px-8">
-        <div>
+      <SpriteFrame src={FOLLOW_FRAME_IMAGE} sprite={FOLLOW_SPRITE} aspect="2118 / 584">
+        <div className="absolute inset-x-[8%] bottom-[23%] top-[22.6%] flex items-center">
+          <div>
           <a
             href="https://x.com/arcsultans"
             target="_blank"
@@ -196,8 +227,9 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
               I'VE FOLLOWED @ARCSultans ON X
             </Label>
           </div>
+          </div>
         </div>
-      </div>
+      </SpriteFrame>
 
       {errors.form && <p className="text-sm text-destructive">{errors.form}</p>}
 
@@ -208,7 +240,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         className="mx-auto block h-10 w-[230px] border-0 bg-transparent font-display text-[11px] font-bold text-footer-title shadow-none hover:bg-transparent disabled:cursor-not-allowed disabled:opacity-100 sm:h-11 sm:w-[250px] sm:text-xs"
       >
         {submitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-        SUBMIT
+        SEAL YOUR CLAIM
       </Button>
     </form>
   );
