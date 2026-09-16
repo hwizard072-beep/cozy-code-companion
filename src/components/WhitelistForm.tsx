@@ -125,7 +125,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="wallet" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           ARC WALLET ADDRESS
         </Label>
-        <div style={FIELD_FRAME} className="flex h-11 items-center px-6 sm:h-12 sm:px-7">
+        <div style={FIELD_FRAME} className="flex h-14 items-center px-6">
           <Input
             id="wallet"
             value={walletAddress}
@@ -147,7 +147,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="x-username" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X USERNAME
         </Label>
-        <div style={FIELD_FRAME} className="flex h-11 items-center px-6 sm:h-12 sm:px-7">
+        <div style={FIELD_FRAME} className="flex h-14 items-center px-6">
           <Input
             id="x-username"
             value={xUsername}
@@ -164,7 +164,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="x-comment-link" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X COMMENT LINK
         </Label>
-        <div style={FIELD_FRAME} className="flex h-11 items-center px-6 sm:h-12 sm:px-7">
+        <div style={FIELD_FRAME} className="flex h-14 items-center px-6">
           <Input
             id="x-comment-link"
             value={xCommentLink}
@@ -180,7 +180,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         {errors.xCommentLink && <p className="text-xs text-destructive">{errors.xCommentLink}</p>}
       </div>
 
-      <div style={FOLLOW_FRAME} className="flex h-[76px] items-center px-7 sm:h-20 sm:px-8">
+      <div style={FOLLOW_FRAME} className="flex h-[76px] items-center px-7 sm:px-8">
         <div>
           <a
             href="https://x.com/arcsultans"
@@ -214,7 +214,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         className="mx-auto block h-10 w-[230px] border-0 bg-transparent font-display text-[11px] font-bold text-footer-title shadow-none hover:bg-transparent disabled:cursor-not-allowed disabled:opacity-100 sm:h-11 sm:w-[250px] sm:text-xs"
       >
         {submitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-        SUBMIT
+        SEAL YOUR CLAIM
       </Button>
     </form>
   );
