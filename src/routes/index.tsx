@@ -103,11 +103,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [open, setOpen] = useState(false);
-  const [view, setView] = useState<"home" | "whitelist" | "success">("home");
+  const [view, setView] = useState<"home" | "whitelist" | "form" | "success">("home");
 
   function handleWhitelistDone() {
-    setOpen(false);
     setView("success");
   }
 
@@ -115,7 +113,7 @@ function Index() {
 
   return (
     <main id="top" className="relative flex min-h-dvh flex-col overflow-hidden bg-background">
-      <StateBackground isWhitelist={isWhitelist} />
+      <StateBackground isWhitelist={isWhitelist || view === "form"} />
 
       {/* Top corner badges — left & right */}
       <div className="pointer-events-none fixed inset-x-0 top-0 z-30 flex items-start justify-between px-4 py-3 sm:px-6 sm:py-4">
