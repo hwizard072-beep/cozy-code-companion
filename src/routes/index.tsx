@@ -210,8 +210,18 @@ function Index() {
                 />
               </header>
 
-              <div className="px-1 py-1 sm:px-2 sm:py-2">
-                <WhitelistForm onDone={handleWhitelistDone} />
+              <div className="relative">
+                <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+                  <img
+                    src={PANEL_FRAME}
+                    alt=""
+                    className="absolute max-w-none [image-rendering:pixelated]"
+                    style={{ width: "107%", height: "111.7%", left: "-3.45%", top: "-5.82%" }}
+                  />
+                </div>
+                <div className="relative z-10 px-5 py-5 sm:px-6 sm:py-6">
+                  <WhitelistForm onDone={handleWhitelistDone} />
+                </div>
               </div>
             </div>
           </section>
