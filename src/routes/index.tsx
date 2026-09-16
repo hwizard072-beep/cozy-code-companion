@@ -211,20 +211,20 @@ function Index() {
         ) : view === "form" ? (
           <section key="form" className="state-enter mx-auto flex w-full max-w-xl flex-col items-center justify-center">
             <div className="w-full max-w-[360px]">
-              <header className="relative z-10 -mb-1 px-4 text-center">
+              <header className="relative z-10 -mb-2 px-4 text-center">
                 <h1 className="sr-only">ARCSultans Whitelist</h1>
                 <img
                   src={WHITELIST_TAG}
                   alt="Whitelist"
-                  className="mx-auto h-12 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-16"
+                  className="mx-auto h-14 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-20"
                 />
               </header>
 
-              <div style={FORM_PANEL_FRAME} className="bg-popover/80">
-                <div className="px-1 py-1 sm:px-2 sm:py-2">
+              <SpriteFrame src={WHITELIST_PANEL} sprite={PANEL_SPRITE} aspect="1013 / 1416">
+                <div className="absolute inset-x-[8%] bottom-[4.5%] top-[4.5%] flex flex-col justify-center">
                   <WhitelistForm onDone={handleWhitelistDone} />
                 </div>
-              </div>
+              </SpriteFrame>
             </div>
           </section>
         ) : (
