@@ -211,7 +211,7 @@ function Index() {
         ) : view === "form" ? (
           <section key="form" className="state-enter mx-auto flex w-full max-w-xl flex-col items-center justify-center py-4">
             <div className="w-full max-w-md">
-              <header className="relative z-10 -mb-4 px-4 text-center sm:-mb-6">
+              <header className="relative z-10 mb-1 px-4 text-center sm:mb-2">
                 <h1 className="sr-only">ARCSultans Whitelist</h1>
                 <img
                   src={wlTagAsset.url}
