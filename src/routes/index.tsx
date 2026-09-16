@@ -19,14 +19,14 @@ const WHITELIST_BUTTON_BACKGROUND = {
   backgroundSize: "100% 100%",
   imageRendering: "pixelated",
 } as const;
-const FORM_PANEL_FRAME = {
-  borderStyle: "solid",
-  borderColor: "transparent",
-  borderWidth: "20px",
-  borderImageSource: `url(${WHITELIST_PANEL})`,
-  borderImageSlice: "120 fill",
-  borderImageRepeat: "stretch",
-  imageRendering: "pixelated",
+// Panel frame sprite-crop: whitelistframes.png has transparent margins baked
+// in, so we render only the art region (1013×1416 inside the 1024×1536 canvas)
+// at its native aspect ratio — nothing paints outside the gold frame.
+const PANEL_SPRITE = {
+  width: "101.086%",
+  height: "108.475%",
+  left: "0%",
+  top: "-4.307%",
 } as const;
 const WHITELIST_BACKGROUND = `${CDN_ROOT}/backgroundstory/whitelistpage.png`;
 
