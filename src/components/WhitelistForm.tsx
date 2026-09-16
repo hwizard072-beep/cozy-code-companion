@@ -205,25 +205,25 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
       </div>
 
       <SpriteFrame src={FOLLOW_FRAME_IMAGE} sprite={FOLLOW_SPRITE} aspect="2118 / 584">
-        <div className="absolute inset-x-[8%] bottom-[21%] top-[27%] flex items-center">
+        <div className="absolute inset-x-[8%] bottom-[24%] top-[24%] flex items-center">
           <div>
           <a
             href="https://x.com/arcsultans"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-display text-[10px] font-bold text-footer-title"
+            className="inline-flex items-center gap-1.5 font-display text-[10px] font-bold leading-4 text-footer-title"
           >
             Follow @ARCSultans on X
-            <ExternalLink className="h-3.5 w-3.5" />
+            <ExternalLink className="h-3 w-3" />
           </a>
-          <div className="mt-1.5 flex items-start gap-2.5">
+          <div className="mt-1 flex items-center gap-2">
             <Checkbox
               id="followed"
               checked={followed}
               onCheckedChange={(v) => setFollowed(v === true)}
-              className="mt-0.5 rounded-none border-footer-title data-[state=checked]:bg-footer-title"
+              className="h-3.5 w-3.5 rounded-none border-footer-title data-[state=checked]:bg-footer-title"
             />
-            <Label htmlFor="followed" className="font-display text-[9px] leading-5 font-normal text-footer-title">
+            <Label htmlFor="followed" className="font-display text-[8px] leading-4 font-normal text-footer-title">
               I'VE FOLLOWED @ARCSultans ON X
             </Label>
           </div>
