@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -168,23 +168,18 @@ function Index() {
           </section>
         ) : view === "whitelist" ? (
           <section key="whitelist" className="state-enter mx-auto flex w-full max-w-xl items-center justify-center">
-            <div className="w-full max-w-md">
-              <header className="px-4 py-3 text-center">
+            <div className="w-full max-w-lg">
+              <header className="relative z-10 -mb-6 px-4 pt-1 text-center sm:-mb-8">
                 <h1 className="sr-only">ARCSultans</h1>
                 <img
                   src={TITLE_LOGO}
                   alt="ARCSultans"
-                  className="mx-auto h-10 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-12"
+                  className="mx-auto h-14 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-20"
                 />
-                <div className="mt-2 flex items-center justify-center gap-3 font-display text-[8px] text-muted-foreground sm:gap-6 sm:text-[9px]">
-                   <span>SUPPLY: 999</span>
-                  <span className="text-primary [animation:arcade-blink_1.2s_steps(1)_infinite]">WHITELIST LIVE</span>
-                   <span>1 ARC SULTAN</span>
-                </div>
               </header>
 
-              <div className="flex flex-col items-center px-4 py-4">
-                <div className="relative aspect-square w-full max-w-72">
+              <div className="flex flex-col items-center px-4">
+                <div className="relative aspect-square w-full max-w-sm sm:max-w-md">
                   <img
                     src={CENTER_PREVIEW}
                     alt="Animated ARCSultans NFT collection preview"
@@ -195,49 +190,32 @@ function Index() {
                     alt=""
                     className="absolute inset-0 h-full w-full object-contain [image-rendering:pixelated]"
                   />
+                  <Dialog open={open} onOpenChange={setOpen}>
+                    <DialogTrigger asChild>
+                      <Button
+                        size="lg"
+                        style={WHITELIST_BUTTON_BACKGROUND}
+                        className="absolute left-[20%] top-[75%] h-[12%] w-[60%] border-0 bg-primary px-2 font-display text-[10px] font-bold text-footer-title shadow-none hover:bg-primary/90 sm:text-xs"
+                      >
+                        CLAIM YOUR THRONE
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-h-[92vh] overflow-y-auto border-4 border-accent bg-popover p-5 pixel-shadow sm:max-w-md sm:rounded-none sm:p-7">
+                      <DialogHeader>
+                        <DialogTitle className="font-display text-lg text-accent">JOIN WHITELIST</DialogTitle>
+                        <DialogDescription className="font-display text-[10px] leading-5">
+                          COMPLETE ALL FIELDS TO SECURE YOUR SPOT
+                        </DialogDescription>
+                      </DialogHeader>
+                      <WhitelistForm onDone={handleWhitelistDone} />
+                    </DialogContent>
+                  </Dialog>
                 </div>
 
-                <p className="mt-3 text-center font-display text-[9px] leading-4 text-muted-foreground sm:text-[10px]">
+                <p className="mt-3 text-center font-display text-[10px] font-bold leading-5 text-footer-title [text-shadow:0_2px_0_var(--background),0_0_10px_color-mix(in_oklab,var(--footer-title)_30%,transparent)] sm:text-xs">
                    999 Sultans. 1 Arc Sultan. A golden dynasty on ARC network.
                 </p>
-
-                <Dialog open={open} onOpenChange={setOpen}>
-                  <DialogTrigger asChild>
-                    <Button
-                      size="lg"
-                      style={WHITELIST_BUTTON_BACKGROUND}
-                      className="mt-4 h-8 w-full max-w-[150px] border-0 bg-primary px-2 font-display text-[9px] font-bold text-primary-foreground shadow-none hover:bg-primary/90 sm:text-[10px]"
-                    >
-                      CLAIM YOUR THRONE
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-h-[92vh] overflow-y-auto border-4 border-accent bg-popover p-5 pixel-shadow sm:max-w-md sm:rounded-none sm:p-7">
-                    <DialogHeader>
-                      <DialogTitle className="font-display text-lg text-accent">JOIN WHITELIST</DialogTitle>
-                      <DialogDescription className="font-display text-[10px] leading-5">
-                        COMPLETE ALL FIELDS TO SECURE YOUR SPOT
-                      </DialogDescription>
-                    </DialogHeader>
-                    <WhitelistForm onDone={handleWhitelistDone} />
-                  </DialogContent>
-                </Dialog>
-
-                <div className="mt-3 flex gap-2" aria-hidden="true">
-                  {SLIDES.map((src, i) => (
-                    <span
-                      key={src}
-                      className={`h-2 transition-all duration-300 ${
-                        i === active ? "w-6 bg-accent" : "w-2 bg-secondary"
-                      }`}
-                    />
-                  ))}
-                </div>
               </div>
-
-              <footer className="flex items-center justify-between px-4 py-2 font-display text-[8px] text-muted-foreground">
-                <span>MINT: 16.09.2026</span>
-                <span className="text-accent">SYSTEM READY</span>
-              </footer>
             </div>
           </section>
         ) : (
