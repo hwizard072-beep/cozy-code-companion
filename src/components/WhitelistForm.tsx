@@ -114,12 +114,12 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" noValidate>
-      <div className="space-y-1.5">
+    <form onSubmit={handleSubmit} className="space-y-2" noValidate>
+      <div className="space-y-1">
         <Label htmlFor="wallet" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           ARC WALLET ADDRESS
         </Label>
-        <div style={FIELD_FRAME} className="px-5 py-3 sm:px-7 sm:py-4">
+        <div style={FIELD_FRAME} className="flex h-11 items-center px-6 sm:h-12 sm:px-7">
           <Input
             id="wallet"
             value={walletAddress}
@@ -128,7 +128,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
             autoComplete="off"
             spellCheck={false}
             maxLength={42}
-            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:h-8 sm:text-sm"
+            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
           />
         </div>
         {walletAddress.length > 0 && !walletValid && (
@@ -137,28 +137,28 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         {errors.walletAddress && <p className="text-xs text-destructive">{errors.walletAddress}</p>}
       </div>
 
-      <div className="space-y-1.5">
+      <div className="space-y-1">
         <Label htmlFor="x-username" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X USERNAME
         </Label>
-        <div style={FIELD_FRAME} className="px-5 py-3 sm:px-7 sm:py-4">
+        <div style={FIELD_FRAME} className="flex h-11 items-center px-6 sm:h-12 sm:px-7">
           <Input
             id="x-username"
             value={xUsername}
             onChange={(e) => setXUsername(e.target.value)}
             placeholder="@yourhandle"
             maxLength={50}
-            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:h-8 sm:text-sm"
+            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
           />
         </div>
         {errors.xUsername && <p className="text-xs text-destructive">{errors.xUsername}</p>}
       </div>
 
-      <div className="space-y-1.5">
+      <div className="space-y-1">
         <Label htmlFor="x-comment-link" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X COMMENT LINK
         </Label>
-        <div style={FIELD_FRAME} className="px-5 py-3 sm:px-7 sm:py-4">
+        <div style={FIELD_FRAME} className="flex h-11 items-center px-6 sm:h-12 sm:px-7">
           <Input
             id="x-comment-link"
             value={xCommentLink}
@@ -167,14 +167,14 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
             autoComplete="off"
             spellCheck={false}
             maxLength={500}
-            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:h-8 sm:text-sm"
+            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
           />
         </div>
         {linkError && <p className="text-xs text-destructive">{linkError}</p>}
         {errors.xCommentLink && <p className="text-xs text-destructive">{errors.xCommentLink}</p>}
       </div>
 
-      <div style={FOLLOW_FRAME} className="px-6 py-5 sm:px-8 sm:py-6">
+      <div style={FOLLOW_FRAME} className="flex h-[76px] items-center px-7 sm:h-20 sm:px-8">
         <div>
           <a
             href="https://x.com/arcsultans"
@@ -185,7 +185,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
             Follow @ARCSultans on X
             <ExternalLink className="h-3.5 w-3.5" />
           </a>
-          <div className="mt-2.5 flex items-start gap-2.5">
+          <div className="mt-1.5 flex items-start gap-2.5">
             <Checkbox
               id="followed"
               checked={followed}
@@ -205,7 +205,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         type="submit"
         disabled={!canSubmit}
         style={SUBMIT_BUTTON}
-        className="mx-auto block h-11 w-[250px] border-0 bg-transparent font-display text-[11px] font-bold text-footer-title shadow-none hover:bg-transparent disabled:cursor-not-allowed disabled:opacity-100 sm:h-[54px] sm:w-[300px] sm:text-xs"
+        className="mx-auto block h-10 w-[230px] border-0 bg-transparent font-display text-[11px] font-bold text-footer-title shadow-none hover:bg-transparent disabled:cursor-not-allowed disabled:opacity-100 sm:h-11 sm:w-[250px] sm:text-xs"
       >
         {submitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
         SUBMIT

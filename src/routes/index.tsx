@@ -22,7 +22,7 @@ const WHITELIST_BUTTON_BACKGROUND = {
 const FORM_PANEL_FRAME = {
   borderStyle: "solid",
   borderColor: "transparent",
-  borderWidth: "26px",
+  borderWidth: "20px",
   borderImageSource: `url(${WHITELIST_PANEL})`,
   borderImageSlice: "120 fill",
   borderImageRepeat: "stretch",
@@ -147,7 +147,7 @@ function Index() {
       )}
 
       {/* Content — fills the available viewport above the footer */}
-      <div className="relative z-10 flex min-h-[540px] flex-1 flex-col items-center justify-center px-4 py-5">
+      <div className="relative z-10 flex min-h-0 flex-1 flex-col items-center justify-center px-4 py-3">
         {view === "home" ? (
           <section key="home" className="state-enter mx-auto flex h-full w-full max-w-3xl -translate-y-12 flex-col items-center justify-center pt-24 text-center sm:-translate-y-16 sm:pt-28">
             <h1 className="sr-only">ARCSultans</h1>
@@ -209,19 +209,19 @@ function Index() {
             </div>
           </section>
         ) : view === "form" ? (
-          <section key="form" className="state-enter mx-auto flex w-full max-w-xl flex-col items-center justify-center py-4">
-            <div className="w-full max-w-md">
-              <header className="relative z-10 mb-1 px-4 text-center sm:mb-2">
+          <section key="form" className="state-enter mx-auto flex w-full max-w-xl flex-col items-center justify-center">
+            <div className="w-full max-w-[360px]">
+              <header className="relative z-10 -mb-1 px-4 text-center">
                 <h1 className="sr-only">ARCSultans Whitelist</h1>
                 <img
                   src={WHITELIST_TAG}
                   alt="Whitelist"
-                  className="mx-auto h-16 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-24"
+                  className="mx-auto h-12 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-16"
                 />
               </header>
 
               <div style={FORM_PANEL_FRAME} className="bg-popover/80">
-                <div className="px-1 py-2 sm:px-2 sm:py-3">
+                <div className="px-1 py-1 sm:px-2 sm:py-2">
                   <WhitelistForm onDone={handleWhitelistDone} />
                 </div>
               </div>
