@@ -192,32 +192,47 @@ function Index() {
                     alt=""
                     className="absolute inset-0 h-full w-full object-contain [image-rendering:pixelated]"
                   />
-                  <Dialog open={open} onOpenChange={setOpen}>
-                    <DialogTrigger asChild>
-                      <Button
-                        size="lg"
-                        style={WHITELIST_BUTTON_BACKGROUND}
-                        className="absolute left-[20%] top-[72.5%] h-[12%] w-[60%] border-0 bg-primary px-2 font-display text-[10px] font-bold text-footer-title shadow-none hover:bg-primary/90 sm:text-xs"
-                      >
-                        CLAIM YOUR THRONE
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-h-[92vh] overflow-y-auto border-4 border-accent bg-popover p-5 pixel-shadow sm:max-w-md sm:rounded-none sm:p-7">
-                      <DialogHeader>
-                        <DialogTitle className="font-display text-lg text-accent">JOIN WHITELIST</DialogTitle>
-                        <DialogDescription className="font-display text-[10px] leading-5">
-                          COMPLETE ALL FIELDS TO SECURE YOUR SPOT
-                        </DialogDescription>
-                      </DialogHeader>
-                      <WhitelistForm onDone={handleWhitelistDone} />
-                    </DialogContent>
-                  </Dialog>
+                  <Button
+                    size="lg"
+                    onClick={() => setView("form")}
+                    style={WHITELIST_BUTTON_BACKGROUND}
+                    className="absolute left-[20%] top-[72.5%] h-[12%] w-[60%] border-0 bg-primary px-2 font-display text-[10px] font-bold text-footer-title shadow-none hover:bg-primary/90 sm:text-xs"
+                  >
+                    CLAIM YOUR THRONE
+                  </Button>
                 </div>
 
                 <p className="-mt-10 text-center font-display text-[10px] font-bold leading-5 text-footer-title [text-shadow:0_2px_0_var(--background),0_0_10px_color-mix(in_oklab,var(--footer-title)_30%,transparent)] sm:-mt-12 sm:text-xs">
                   999 Sultans. 1 Arc Sultan.<br />A golden dynasty on ARC network.
                 </p>
               </div>
+            </div>
+          </section>
+        ) : view === "form" ? (
+          <section key="form" className="state-enter mx-auto flex w-full max-w-xl flex-col items-center justify-center py-4">
+            <div className="w-full max-w-md">
+              <header className="relative z-10 -mb-4 px-4 text-center sm:-mb-6">
+                <h1 className="sr-only">ARCSultans Whitelist</h1>
+                <img
+                  src={wlTagAsset.url}
+                  alt="Whitelist"
+                  className="mx-auto h-16 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-24"
+                />
+              </header>
+
+              <div style={FORM_PANEL_FRAME}>
+                <div className="px-1 py-1 sm:px-2">
+                  <WhitelistForm onDone={handleWhitelistDone} />
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setView("whitelist")}
+                className="mx-auto mt-3 block font-display text-[9px] uppercase text-footer-title/80 hover:text-footer-title sm:text-[10px]"
+              >
+                ← Back
+              </button>
             </div>
           </section>
         ) : (
