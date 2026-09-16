@@ -10,22 +10,12 @@ const TITLE_LOGO = `${CDN_ROOT}/backgroundstory/home%20fronttext.png`;
 const FOOTER_LOGO = `${CDN_ROOT}/footer/ARCSULTANSfootertext.png`;
 const THRONE_BUTTON = `${CDN_ROOT}/buttons/button-4kd.png`;
 const WHITELIST_TAG = `${CDN_ROOT}/whitelist_submit/whitelistag.png`;
-const WHITELIST_PANEL = `${CDN_ROOT}/whitelist_submit/whitelistframes.png`;
 const WHITELIST_BUTTON_BACKGROUND = {
   backgroundColor: "transparent",
   backgroundImage: `url(${THRONE_BUTTON})`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "100% 100%",
-  imageRendering: "pixelated",
-} as const;
-const FORM_PANEL_FRAME = {
-  borderStyle: "solid",
-  borderColor: "transparent",
-  borderWidth: "20px",
-  borderImageSource: `url(${WHITELIST_PANEL})`,
-  borderImageSlice: "120 fill",
-  borderImageRepeat: "stretch",
   imageRendering: "pixelated",
 } as const;
 const WHITELIST_BACKGROUND = `${CDN_ROOT}/backgroundstory/whitelistpage.png`;
@@ -220,10 +210,8 @@ function Index() {
                 />
               </header>
 
-              <div style={FORM_PANEL_FRAME} className="bg-popover/80">
-                <div className="px-1 py-1 sm:px-2 sm:py-2">
-                  <WhitelistForm onDone={handleWhitelistDone} />
-                </div>
+              <div className="px-1 py-1 sm:px-2 sm:py-2">
+                <WhitelistForm onDone={handleWhitelistDone} />
               </div>
             </div>
           </section>
