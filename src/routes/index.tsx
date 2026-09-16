@@ -128,8 +128,8 @@ function Index() {
         </p>
       </div>
 
-      {/* 4 corner GIF preview boxes — anchored to viewport corners (whitelist state only, lg+) */}
-      {isWhitelist && (
+      {/* 4 corner GIF preview boxes — anchored to viewport corners (whitelist + form states, lg+) */}
+      {(isWhitelist || view === "form") && (
         <>
           <div className="fixed left-40 top-20 z-10 hidden h-24 w-24 lg:block">
             <SideGifPreview gif={SIDE_FRAMES[0]} slot={0} />
@@ -211,7 +211,7 @@ function Index() {
         ) : view === "form" ? (
           <section key="form" className="state-enter mx-auto flex w-full max-w-xl flex-col items-center justify-center py-4">
             <div className="w-full max-w-md">
-              <header className="relative z-10 -mb-4 px-4 text-center sm:-mb-6">
+              <header className="relative z-10 -mb-7 px-4 text-center sm:-mb-10">
                 <h1 className="sr-only">ARCSultans Whitelist</h1>
                 <img
                   src={wlTagAsset.url}
