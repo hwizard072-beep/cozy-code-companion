@@ -143,18 +143,20 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="wallet" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           ARC WALLET ADDRESS
         </Label>
-        <div style={FIELD_FRAME} className="flex h-14 items-center px-6">
-          <Input
-            id="wallet"
-            value={walletAddress}
-            onChange={(e) => setWalletAddress(e.target.value)}
-            placeholder="0x…"
-            autoComplete="off"
-            spellCheck={false}
-            maxLength={42}
-            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
-          />
-        </div>
+        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 369">
+          <div className="absolute inset-x-[11%] bottom-[19.5%] top-[19.2%] flex items-center">
+            <Input
+              id="wallet"
+              value={walletAddress}
+              onChange={(e) => setWalletAddress(e.target.value)}
+              placeholder="0x…"
+              autoComplete="off"
+              spellCheck={false}
+              maxLength={42}
+              className="h-full rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
+            />
+          </div>
+        </SpriteFrame>
         {walletAddress.length > 0 && !walletValid && (
           <p className="text-xs text-destructive">Must start with 0x followed by 40 hex characters.</p>
         )}
@@ -165,16 +167,18 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="x-username" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X USERNAME
         </Label>
-        <div style={FIELD_FRAME} className="flex h-14 items-center px-6">
-          <Input
-            id="x-username"
-            value={xUsername}
-            onChange={(e) => setXUsername(e.target.value)}
-            placeholder="@yourhandle"
-            maxLength={50}
-            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
-          />
-        </div>
+        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 369">
+          <div className="absolute inset-x-[11%] bottom-[19.5%] top-[19.2%] flex items-center">
+            <Input
+              id="x-username"
+              value={xUsername}
+              onChange={(e) => setXUsername(e.target.value)}
+              placeholder="@yourhandle"
+              maxLength={50}
+              className="h-full rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
+            />
+          </div>
+        </SpriteFrame>
         {errors.xUsername && <p className="text-xs text-destructive">{errors.xUsername}</p>}
       </div>
 
@@ -182,24 +186,27 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="x-comment-link" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X COMMENT LINK
         </Label>
-        <div style={FIELD_FRAME} className="flex h-14 items-center px-6">
-          <Input
-            id="x-comment-link"
-            value={xCommentLink}
-            onChange={(e) => setXCommentLink(e.target.value)}
-            placeholder="https://x.com/.../status/..."
-            autoComplete="off"
-            spellCheck={false}
-            maxLength={500}
-            className="h-7 rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
-          />
-        </div>
+        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 369">
+          <div className="absolute inset-x-[11%] bottom-[19.5%] top-[19.2%] flex items-center">
+            <Input
+              id="x-comment-link"
+              value={xCommentLink}
+              onChange={(e) => setXCommentLink(e.target.value)}
+              placeholder="https://x.com/…"
+              autoComplete="off"
+              spellCheck={false}
+              maxLength={500}
+              className="h-full rounded-none border-0 bg-transparent px-0 font-mono text-xs text-footer-title shadow-none placeholder:text-footer-title/40 focus-visible:ring-0 sm:text-sm"
+            />
+          </div>
+        </SpriteFrame>
         {linkError && <p className="text-xs text-destructive">{linkError}</p>}
         {errors.xCommentLink && <p className="text-xs text-destructive">{errors.xCommentLink}</p>}
       </div>
 
-      <div style={FOLLOW_FRAME} className="flex h-[76px] items-center px-7 sm:px-8">
-        <div>
+      <SpriteFrame src={FOLLOW_FRAME_IMAGE} sprite={FOLLOW_SPRITE} aspect="2118 / 584">
+        <div className="absolute inset-x-[8%] bottom-[23%] top-[22.6%] flex items-center">
+          <div>
           <a
             href="https://x.com/arcsultans"
             target="_blank"
