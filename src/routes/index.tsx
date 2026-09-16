@@ -178,8 +178,8 @@ function Index() {
           </section>
         ) : view === "whitelist" ? (
           <section key="whitelist" className="state-enter mx-auto flex w-full max-w-xl items-center justify-center">
-            <div className="w-full max-w-md border-4 border-secondary bg-card pixel-shadow">
-              <header className="border-b-4 border-secondary bg-muted px-4 py-3 text-center">
+            <div className="w-full max-w-md">
+              <header className="px-4 py-3 text-center">
                 <h1 className="sr-only">ARCSultans</h1>
                 <img
                   src={TITLE_LOGO}
@@ -194,16 +194,16 @@ function Index() {
               </header>
 
               <div className="flex flex-col items-center px-4 py-4">
-                <div className="relative aspect-[557/543] w-full max-w-72 overflow-hidden">
+                <div className="relative aspect-square w-full max-w-72">
                   <img
                     src={CENTER_PREVIEW}
                     alt="Animated ARCSultans NFT collection preview"
-                    className="absolute left-[10.05%] top-[9.94%] h-[80.11%] w-[79.71%] object-cover [image-rendering:pixelated]"
+                    className="absolute left-[32.3%] top-[29.03%] h-[34.61%] w-[35.41%] object-cover [image-rendering:pixelated]"
                   />
                   <img
                     src={MAIN_FRAME}
                     alt=""
-                    className="absolute left-[-62.66%] top-[-56.91%] h-auto w-[225.13%] max-w-none [image-rendering:pixelated]"
+                    className="absolute inset-0 h-full w-full object-contain [image-rendering:pixelated]"
                   />
                 </div>
 
@@ -244,7 +244,7 @@ function Index() {
                 </div>
               </div>
 
-              <footer className="flex items-center justify-between border-t-4 border-secondary bg-muted px-4 py-2 font-display text-[8px] text-muted-foreground">
+              <footer className="flex items-center justify-between px-4 py-2 font-display text-[8px] text-muted-foreground">
                 <span>MINT: 16.09.2026</span>
                 <span className="text-accent">SYSTEM READY</span>
               </footer>
