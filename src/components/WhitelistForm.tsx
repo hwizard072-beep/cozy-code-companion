@@ -227,6 +227,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
               I'VE FOLLOWED @ARCSultans ON X
             </Label>
           </div>
+          </div>
         </div>
       </SpriteFrame>
 
