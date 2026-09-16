@@ -169,12 +169,12 @@ function Index() {
         ) : view === "whitelist" ? (
           <section key="whitelist" className="state-enter mx-auto flex w-full max-w-xl items-center justify-center">
             <div className="w-full max-w-lg">
-              <header className="relative z-10 -mb-6 px-4 pt-1 text-center sm:-mb-8">
+              <header className="relative z-10 -mb-7 px-4 pt-1 text-center sm:-mb-10">
                 <h1 className="sr-only">ARCSultans</h1>
                 <img
                   src={TITLE_LOGO}
                   alt="ARCSultans"
-                  className="mx-auto h-14 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-20"
+                  className="mx-auto h-16 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-24"
                 />
               </header>
 
@@ -195,7 +195,7 @@ function Index() {
                       <Button
                         size="lg"
                         style={WHITELIST_BUTTON_BACKGROUND}
-                        className="absolute left-[20%] top-[75%] h-[12%] w-[60%] border-0 bg-primary px-2 font-display text-[10px] font-bold text-footer-title shadow-none hover:bg-primary/90 sm:text-xs"
+                        className="absolute left-[20%] top-[72.5%] h-[12%] w-[60%] border-0 bg-primary px-2 font-display text-[10px] font-bold text-footer-title shadow-none hover:bg-primary/90 sm:text-xs"
                       >
                         CLAIM YOUR THRONE
                       </Button>
@@ -212,7 +212,7 @@ function Index() {
                   </Dialog>
                 </div>
 
-                <p className="mt-3 text-center font-display text-[10px] font-bold leading-5 text-footer-title [text-shadow:0_2px_0_var(--background),0_0_10px_color-mix(in_oklab,var(--footer-title)_30%,transparent)] sm:text-xs">
+                <p className="mt-1 text-center font-display text-[10px] font-bold leading-5 text-footer-title [text-shadow:0_2px_0_var(--background),0_0_10px_color-mix(in_oklab,var(--footer-title)_30%,transparent)] sm:text-xs">
                    999 Sultans. 1 Arc Sultan. A golden dynasty on ARC network.
                 </p>
               </div>
