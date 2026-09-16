@@ -143,8 +143,8 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="wallet" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           ARC WALLET ADDRESS
         </Label>
-        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 369">
-          <div className="absolute inset-x-[11%] bottom-[19.5%] top-[19.2%] flex items-center">
+        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 430">
+          <div className="absolute inset-x-[11%] bottom-[17%] top-[16.8%] flex items-center">
             <Input
               id="wallet"
               value={walletAddress}
@@ -167,8 +167,8 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="x-username" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X USERNAME
         </Label>
-        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 369">
-          <div className="absolute inset-x-[11%] bottom-[19.5%] top-[19.2%] flex items-center">
+        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 430">
+          <div className="absolute inset-x-[11%] bottom-[17%] top-[16.8%] flex items-center">
             <Input
               id="x-username"
               value={xUsername}
@@ -186,8 +186,8 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="x-comment-link" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X COMMENT LINK
         </Label>
-        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 369">
-          <div className="absolute inset-x-[11%] bottom-[19.5%] top-[19.2%] flex items-center">
+        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 430">
+          <div className="absolute inset-x-[11%] bottom-[17%] top-[16.8%] flex items-center">
             <Input
               id="x-comment-link"
               value={xCommentLink}
@@ -205,7 +205,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
       </div>
 
       <SpriteFrame src={FOLLOW_FRAME_IMAGE} sprite={FOLLOW_SPRITE} aspect="2118 / 584">
-        <div className="absolute inset-x-[8%] bottom-[23%] top-[22.6%] flex items-center">
+        <div className="absolute inset-x-[8%] bottom-[19%] top-[26%] flex items-center">
           <div>
           <a
             href="https://x.com/arcsultans"
