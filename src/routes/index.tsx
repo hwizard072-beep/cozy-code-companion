@@ -210,7 +210,7 @@ function Index() {
           </section>
         ) : view === "form" ? (
           <section key="form" className="state-enter mx-auto flex w-full max-w-xl flex-col items-center justify-center">
-            <div className="w-full max-w-[min(360px,calc((100dvh-280px)*.715))]">
+            <div className="w-full max-w-[min(360px,calc((100dvh-300px)*.715))]">
               <header className="relative z-10 -mb-2 px-4 text-center">
                 <h1 className="sr-only">ARCSultans Whitelist</h1>
                 <img
