@@ -10,6 +10,7 @@ const TITLE_LOGO = `${CDN_ROOT}/backgroundstory/home%20fronttext.png`;
 const FOOTER_LOGO = `${CDN_ROOT}/footer/ARCSULTANSfootertext.png`;
 const THRONE_BUTTON = `${CDN_ROOT}/buttons/button-4kd.png`;
 const WHITELIST_TAG = `${CDN_ROOT}/whitelist_submit/whitelistag.png`;
+const PANEL_FRAME = `${CDN_ROOT}/whitelist_submit/whitelistframes.png`;
 const WHITELIST_BUTTON_BACKGROUND = {
   backgroundColor: "transparent",
   backgroundImage: `url(${THRONE_BUTTON})`,
