@@ -32,7 +32,7 @@ const FOLLOW_SPRITE = {
   top: "-10.62%",
 } as const;
 
-function SpriteFrame({
+export function SpriteFrame({
   src,
   sprite,
   aspect,
@@ -237,7 +237,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         type="submit"
         disabled={!canSubmit}
         style={SUBMIT_BUTTON}
-        className="mx-auto block h-10 w-[230px] border-0 bg-transparent font-display text-[11px] font-bold text-footer-title shadow-none hover:bg-transparent disabled:cursor-not-allowed disabled:opacity-100 sm:h-11 sm:w-[250px] sm:text-xs"
+        className="mx-auto block h-10 w-full max-w-[230px] border-0 bg-transparent font-display text-[11px] font-bold text-footer-title shadow-none hover:bg-transparent disabled:cursor-not-allowed disabled:opacity-100 sm:h-11 sm:max-w-[250px] sm:text-xs"
       >
         {submitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
         SEAL YOUR CLAIM

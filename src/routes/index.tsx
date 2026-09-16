@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { WhitelistForm } from "@/components/WhitelistForm";
+import { WhitelistForm, SpriteFrame } from "@/components/WhitelistForm";
 const CDN_ROOT = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main";
 
 const HOME_BACKGROUND = `${CDN_ROOT}/backgroundstory/homepage.png`;
@@ -19,14 +19,14 @@ const WHITELIST_BUTTON_BACKGROUND = {
   backgroundSize: "100% 100%",
   imageRendering: "pixelated",
 } as const;
-const FORM_PANEL_FRAME = {
-  borderStyle: "solid",
-  borderColor: "transparent",
-  borderWidth: "20px",
-  borderImageSource: `url(${WHITELIST_PANEL})`,
-  borderImageSlice: "120 fill",
-  borderImageRepeat: "stretch",
-  imageRendering: "pixelated",
+// Panel frame sprite-crop: whitelistframes.png has transparent margins baked
+// in, so we render only the art region (1013×1416 inside the 1024×1536 canvas)
+// at its native aspect ratio — nothing paints outside the gold frame.
+const PANEL_SPRITE = {
+  width: "101.086%",
+  height: "108.475%",
+  left: "0%",
+  top: "-4.307%",
 } as const;
 const WHITELIST_BACKGROUND = `${CDN_ROOT}/backgroundstory/whitelistpage.png`;
 
@@ -210,21 +210,21 @@ function Index() {
           </section>
         ) : view === "form" ? (
           <section key="form" className="state-enter mx-auto flex w-full max-w-xl flex-col items-center justify-center">
-            <div className="w-full max-w-[360px]">
-              <header className="relative z-10 -mb-1 px-4 text-center">
+            <div className="w-full max-w-[min(360px,calc((100dvh-310px)*.715))]">
+              <header className="relative z-10 -mb-2 px-4 text-center">
                 <h1 className="sr-only">ARCSultans Whitelist</h1>
                 <img
                   src={WHITELIST_TAG}
                   alt="Whitelist"
-                  className="mx-auto h-12 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-16"
+                  className="mx-auto h-14 w-auto max-w-full object-contain [image-rendering:pixelated] sm:h-20"
                 />
               </header>
 
-              <div style={FORM_PANEL_FRAME} className="bg-popover/80">
-                <div className="px-1 py-1 sm:px-2 sm:py-2">
+              <SpriteFrame src={WHITELIST_PANEL} sprite={PANEL_SPRITE} aspect="1013 / 1416">
+                <div className="absolute inset-x-[8%] bottom-[4.5%] top-[4.5%] flex flex-col justify-center">
                   <WhitelistForm onDone={handleWhitelistDone} />
                 </div>
-              </div>
+              </SpriteFrame>
             </div>
           </section>
         ) : (
