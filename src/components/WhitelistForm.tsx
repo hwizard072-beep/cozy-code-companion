@@ -15,21 +15,27 @@ const WALLET_RE = /^0x[a-fA-F0-9]{40}$/;
 // Direct comment link: https://x.com/USERNAME/status/123 or https://twitter.com/USERNAME/status/123
 const X_COMMENT_RE = /^https:\/\/(?:x\.com|twitter\.com)\/([A-Za-z0-9_]+)\/status\/\d+$/;
 
+// Nine-slice (border-image) frames: corners render undistorted, only the
+// straight edges stretch — matches the reference proportions.
 const FIELD_FRAME = {
-  backgroundColor: "transparent",
-  backgroundImage: `url(${FIELD_FRAME_IMAGE})`,
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "100% 100%",
+  borderStyle: "solid",
+  borderColor: "transparent",
+  borderWidth: "18px 21px",
+  borderImageSource: `url(${FIELD_FRAME_IMAGE})`,
+  borderImageSlice: "169 200 186 200 fill",
+  borderImageWidth: "18px 21px",
+  borderImageRepeat: "stretch",
   imageRendering: "pixelated",
 } as const;
 
 const FOLLOW_FRAME = {
-  backgroundColor: "transparent",
-  backgroundImage: `url(${FOLLOW_FRAME_IMAGE})`,
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "100% 100%",
+  borderStyle: "solid",
+  borderColor: "transparent",
+  borderWidth: "6px 21px 8px 21px",
+  borderImageSource: `url(${FOLLOW_FRAME_IMAGE})`,
+  borderImageSlice: "62 200 79 200 fill",
+  borderImageWidth: "6px 21px 8px 21px",
+  borderImageRepeat: "stretch",
   imageRendering: "pixelated",
 } as const;
 
@@ -114,7 +120,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-2" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-1.5" noValidate>
       <div className="space-y-1">
         <Label htmlFor="wallet" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           ARC WALLET ADDRESS
