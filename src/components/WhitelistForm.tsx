@@ -32,7 +32,7 @@ const FOLLOW_SPRITE = {
   top: "-10.62%",
 } as const;
 
-export function SpriteFrame({
+function SpriteFrame({
   src,
   sprite,
   aspect,
@@ -143,8 +143,8 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="wallet" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           ARC WALLET ADDRESS
         </Label>
-        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 430">
-          <div className="absolute inset-x-[11%] bottom-[17%] top-[16.8%] flex items-center">
+        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 369">
+          <div className="absolute inset-x-[11%] bottom-[19.5%] top-[19.2%] flex items-center">
             <Input
               id="wallet"
               value={walletAddress}
@@ -167,8 +167,8 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="x-username" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X USERNAME
         </Label>
-        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 430">
-          <div className="absolute inset-x-[11%] bottom-[17%] top-[16.8%] flex items-center">
+        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 369">
+          <div className="absolute inset-x-[11%] bottom-[19.5%] top-[19.2%] flex items-center">
             <Input
               id="x-username"
               value={xUsername}
@@ -186,8 +186,8 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         <Label htmlFor="x-comment-link" className="font-display text-[9px] text-footer-title sm:text-[10px]">
           X COMMENT LINK
         </Label>
-        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 430">
-          <div className="absolute inset-x-[11%] bottom-[17%] top-[16.8%] flex items-center">
+        <SpriteFrame src={FIELD_FRAME_IMAGE} sprite={FIELD_SPRITE} aspect="2166 / 369">
+          <div className="absolute inset-x-[11%] bottom-[19.5%] top-[19.2%] flex items-center">
             <Input
               id="x-comment-link"
               value={xCommentLink}
@@ -205,25 +205,25 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
       </div>
 
       <SpriteFrame src={FOLLOW_FRAME_IMAGE} sprite={FOLLOW_SPRITE} aspect="2118 / 584">
-        <div className="absolute inset-x-[8%] bottom-[24%] top-[24%] flex items-center">
+        <div className="absolute inset-x-[8%] bottom-[23%] top-[22.6%] flex items-center">
           <div>
           <a
             href="https://x.com/arcsultans"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-display text-[10px] font-bold leading-4 text-footer-title"
+            className="inline-flex items-center gap-1.5 font-display text-[10px] font-bold text-footer-title"
           >
             Follow @ARCSultans on X
-            <ExternalLink className="h-3 w-3" />
+            <ExternalLink className="h-3.5 w-3.5" />
           </a>
-          <div className="mt-1 flex items-center gap-2">
+          <div className="mt-1.5 flex items-start gap-2.5">
             <Checkbox
               id="followed"
               checked={followed}
               onCheckedChange={(v) => setFollowed(v === true)}
-              className="h-3.5 w-3.5 rounded-none border-footer-title data-[state=checked]:bg-footer-title"
+              className="mt-0.5 rounded-none border-footer-title data-[state=checked]:bg-footer-title"
             />
-            <Label htmlFor="followed" className="font-display text-[8px] leading-4 font-normal text-footer-title">
+            <Label htmlFor="followed" className="font-display text-[9px] leading-5 font-normal text-footer-title">
               I'VE FOLLOWED @ARCSultans ON X
             </Label>
           </div>
@@ -237,7 +237,7 @@ export function WhitelistForm({ onDone }: { onDone?: () => void }) {
         type="submit"
         disabled={!canSubmit}
         style={SUBMIT_BUTTON}
-        className="mx-auto block h-10 w-full max-w-[230px] border-0 bg-transparent font-display text-[11px] font-bold text-footer-title shadow-none hover:bg-transparent disabled:cursor-not-allowed disabled:opacity-100 sm:h-11 sm:max-w-[250px] sm:text-xs"
+        className="mx-auto block h-10 w-[230px] border-0 bg-transparent font-display text-[11px] font-bold text-footer-title shadow-none hover:bg-transparent disabled:cursor-not-allowed disabled:opacity-100 sm:h-11 sm:w-[250px] sm:text-xs"
       >
         {submitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
         SEAL YOUR CLAIM
