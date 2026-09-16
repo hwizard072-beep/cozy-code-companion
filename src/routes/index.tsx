@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { WhitelistForm } from "@/components/WhitelistForm";
-import buttonAsset from "@/assets/button-4k-fixed.png.asset.json";
+import buttonAsset from "@/assets/button-4kd.png.asset.json";
 import wlTagAsset from "@/assets/wl-whitelistag.png.asset.json";
 import wlPanelAsset from "@/assets/wl-whitelistframes.png.asset.json";
 const CDN_ROOT = "https://cdn.jsdelivr.net/gh/0xDarkSeidBull/TheSaudisARC@main";
@@ -165,7 +165,7 @@ function Index() {
               style={WHITELIST_BUTTON_BACKGROUND}
               className="mt-5 h-9 w-full max-w-[250px] border-0 bg-primary px-2 font-display text-[10px] font-bold text-footer-title shadow-none hover:bg-primary/90 sm:h-10 sm:text-xs"
             >
-              CLAIM YOUR THRONE
+              ENTER THE SULTANATE
             </Button>
           </section>
         ) : view === "whitelist" ? (
@@ -220,19 +220,11 @@ function Index() {
                 />
               </header>
 
-              <div style={FORM_PANEL_FRAME}>
-                <div className="px-1 py-1 sm:px-2">
+              <div style={FORM_PANEL_FRAME} className="bg-popover/80">
+                <div className="px-1 py-2 sm:px-2 sm:py-3">
                   <WhitelistForm onDone={handleWhitelistDone} />
                 </div>
               </div>
-
-              <button
-                type="button"
-                onClick={() => setView("whitelist")}
-                className="mx-auto mt-3 block font-display text-[9px] uppercase text-footer-title/80 hover:text-footer-title sm:text-[10px]"
-              >
-                ← Back
-              </button>
             </div>
           </section>
         ) : (
